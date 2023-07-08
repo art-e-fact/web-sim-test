@@ -1,24 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import init, { run_bevy_app } from "rust-web-sim";
+import "./App.css";
 
 function App() {
+  const runBevyApp = async () => {
+    console.log("Running Bevy App");
+    await init();
+    try {
+      run_bevy_app();
+    } catch (error: any) {
+      if (
+        !error.message.includes(
+          "Using exceptions for control flow, don't mind me. This isn't actually an error!"
+        )
+      ) {
+        throw error;
+      }
+    }
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={runBevyApp}>Run Bevy App</button>
     </div>
   );
 }
