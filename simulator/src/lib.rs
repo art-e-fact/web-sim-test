@@ -1,5 +1,5 @@
 mod utils;
-
+mod demo_scene;
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
@@ -13,7 +13,7 @@ pub fn greet() {
 }
 
 #[wasm_bindgen]
-pub fn foo() {
-    println!("Hello, world!");
-    alert("Hello, simulator! FOO");
+pub fn run_models_demo_app() {
+    utils::set_panic_hook();
+    demo_scene::run_models_demo_app();
 }

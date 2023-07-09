@@ -13,7 +13,6 @@ use kesko::physics::{
 };
 use kesko::models;
 
-#[wasm_bindgen]
 pub fn run_models_demo_app() {
     App::new()
         .add_plugins(CorePlugins::default())

@@ -1,19 +1,14 @@
 // import init, { run_bevy_app, run_models_demo_app } from "rust-web-sim";
-import init, { greet, foo } from "simulator";
-import run_demo_scene from "rust-web-sim"
+import init, { greet, run_models_demo_app } from "simulator";
+// import run_demo_scene from "rust-web-sim"
 import "./App.css";
 
 function App() {
   const runBevyApp = async () => {
     console.log("Running Bevy App");
     try {
-      // run_bevy_app();
-      // run_models_demo_app();
-      // console.log("Bevy App ran");
-      
       await init();
-      greet();
-      foo();
+      run_models_demo_app();
     } catch (error: any) {
       if (
         !error.message.includes(
