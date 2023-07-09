@@ -1,13 +1,26 @@
 use wasm_bindgen::prelude::*;
+extern crate console_error_panic_hook;
+use std::panic;
 use bevy::prelude::*;
+
+pub mod demo_scene;
+pub use demo_scene::run_models_demo_app;
+
+#[wasm_bindgen]
+pub fn run_demo_scene2() {
+    demo_scene::run_models_demo_app();
+}
 
 #[wasm_bindgen]
 pub fn run_bevy_app() {
-    App::new()
-        .add_plugins(DefaultPlugins)
-        .add_startup_system(setup)
-        .add_system(rotate_mesh_system)
-        .run();
+    // panic::set_hook(Box::new(console_error_panic_hook::hook));
+
+    demo_scene::run_models_demo_app();
+    // App::new()
+    //     .add_plugins(DefaultPlugins)
+    //     .add_startup_system(setup)
+    //     .add_system(rotate_mesh_system)
+    //     .run();
 }
 
 #[derive(Component)]
